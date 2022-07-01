@@ -13,13 +13,15 @@ const run = () => {
   }
   Array.from(anchors)
     .filter((a) => isGitHubRepoUrl(a.href))
-    .map((a) => {
-      const repoPath = getRepoPathFromUrl(a.href)
-      if (!repoPath) {
-        return
-      }
-      const img = a.appendChild(document.createElement('img'))
-      img.src = createStarLink(repoPath)
+    .forEach((a) => {
+      setTimeout(() => {
+        const repoPath = getRepoPathFromUrl(a.href)
+        if (!repoPath) {
+          return
+        }
+        const img = a.appendChild(document.createElement('img'))
+        img.src = createStarLink(repoPath)
+      }, 100)
     })
 }
 run()
