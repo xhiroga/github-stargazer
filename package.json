@@ -5,7 +5,7 @@
   "scripts": {
     "watch": "webpack --devtool inline-source-map --mode development --watch",
     "build": "webpack --mode production",
-    "clean": "node -e 'fs.rmSync(`dist`, {recursive:true, force:true})'",
+    "clean": "node -e 'fs.rmSync(`dist`, {recursive:true, force:true})' && node -e 'fs.rmSync(`packages`, {recursive:true, force:true})'",
     "lint": "eslint . --ignore-path .gitignore",
     "archive": "mkdir -p packages && cd dist && zip -r ../packages/github-stargazer.zip *",
     "package": "yarn clean && yarn build && yarn archive",
