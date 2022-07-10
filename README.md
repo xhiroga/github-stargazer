@@ -3,6 +3,8 @@
 Displays a star count next to the link to GitHub within the GitHub markdown preview.  
 Useful when you want to quickly find popular repositories, such as on an awesome list.
 
+![](/images/screenshot.png)
+
 Powered by [shields.io](https://shields.io/).
 
 ## Support
