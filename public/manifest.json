@@ -4,7 +4,7 @@
   "description": "",
   "version": "0.1",
   "icons": {
-    "128": "icons/favicon.svg"
+    "128": "icons/128.png"
   },
   "content_scripts": [
     {
