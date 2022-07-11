@@ -11,6 +11,12 @@ describe('isGitHubRepoUrl', () => {
     expect(path).toBeTruthy()
   })
 
+  test('can check another repo', () => {
+    const url = 'https://github.com/heyman333/react-native-responsive-fontsize'
+    const path = isGitHubRepoUrl(url)
+    expect(path).toBeTruthy()
+  })
+
   test('can check github url with file name and fragment', () => {
     const url =
       'https://github.com/nestjs/nest/blob/master/CONTRIBUTING.md#-submitting-an-issue'

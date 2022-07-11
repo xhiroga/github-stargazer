@@ -1,5 +1,5 @@
 const GITHUB_REPO_REGEX = new RegExp(
-  /https:\/\/github.com\/([A-Za-zd](?:[A-Za-zd]|-(?=[A-Za-zd])){0,38}\/[A-Za-z0-9_.-]+)/
+  /https:\/\/github.com\/([A-Za-z\d](?:[A-Za-z\d]|-(?=[A-Za-z\d])){0,38}\/[A-Za-z\d_.-]+)/
 )
 
 export const isGitHubRepoUrl = (url: string): boolean =>
