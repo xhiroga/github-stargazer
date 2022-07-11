@@ -1,9 +1,20 @@
 import { isGitHubRepoUrl, getRepoPathFromUrl, isSameGitHubRepo } from './utils'
 
-const createStarLink = (repoPath: string) =>
-  `https://img.shields.io/github/stars/${repoPath}`
+const timer = (ms: number) => new Promise((res) => setTimeout(res, ms))
 
-const run = () => {
+const displayStarCount = (a: HTMLAnchorElement) => {
+  const repoPath = getRepoPathFromUrl(a.href)
+  if (!repoPath) {
+    return
+  }
+  a.style.display = 'inline-block'
+  const img = a.appendChild(document.createElement('img'))
+  img.style.marginLeft = '3px'
+  img.style.verticalAlign = 'text-bottom'
+  img.src = `https://img.shields.io/github/stars/${repoPath}`
+}
+
+const run = async () => {
   const articles = document.querySelector<HTMLElement>('article.markdown-body')
   const anchors = articles?.querySelectorAll<HTMLAnchorElement>(
     'a[href^="https://github.com/"]'
@@ -11,24 +22,13 @@ const run = () => {
   if (!anchors) {
     return
   }
-  Array.from(anchors)
-    .filter(
-      (a) =>
-        isGitHubRepoUrl(a.href) &&
-        !isSameGitHubRepo(a.href, window.location.href)
-    )
-    .forEach((a) => {
-      setTimeout(() => {
-        const repoPath = getRepoPathFromUrl(a.href)
-        if (!repoPath) {
-          return
-        }
-        a.style.display = 'inline-block'
-        const img = a.appendChild(document.createElement('img'))
-        img.src = createStarLink(repoPath)
-        img.style.marginLeft = '3px'
-        img.style.verticalAlign = 'text-bottom'
-      }, 100)
-    })
+  const filtered = Array.from(anchors).filter(
+    (a) =>
+      isGitHubRepoUrl(a.href) && !isSameGitHubRepo(a.href, window.location.href)
+  )
+  for (const a of filtered) {
+    displayStarCount(a)
+    await timer(100)
+  }
 }
 run()
