@@ -1,4 +1,4 @@
-import { isGitHubRepoUrl, getRepoPathFromUrl, isSameGitHubRepo } from './utils'
+import { isGitHubRepoUrl, getRepoPathFromUrl, isSameGitHubRepo, isGitHubReservedName } from './utils'
 
 const timer = (ms: number) => new Promise((res) => setTimeout(res, ms))
 
@@ -24,7 +24,7 @@ const run = async () => {
   }
   const filtered = Array.from(anchors).filter(
     (a) =>
-      isGitHubRepoUrl(a.href) && !isSameGitHubRepo(a.href, window.location.href)
+      isGitHubRepoUrl(a.href) && !isGitHubReservedName(a.href) && !isSameGitHubRepo(a.href, location.href)
   )
   for (const a of filtered) {
     displayStarCount(a)
