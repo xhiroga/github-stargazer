@@ -15,6 +15,7 @@ const GITHUB_RESERVE_PATHS = [
   'pricing',
   'security',
   'site',
+  'sponsors',
   'topics',
   'trending',
 ]
