@@ -5,7 +5,7 @@ const GITHUB_REPO_REGEX = new RegExp(
 export const isGitHubRepoUrl = (url: string): boolean =>
   GITHUB_REPO_REGEX.test(url)
 
-const GITHUB_RESERVE_PATHS = [
+const GITHUB_RESERVED_PATHS = [
   'about',
   'blog',
   'contact',
@@ -22,7 +22,7 @@ const GITHUB_RESERVE_PATHS = [
 
 export const isGitHubReservedName = (href: string): boolean => {
   const path = href.split('/').slice(3)
-  return GITHUB_RESERVE_PATHS.includes(path[0])
+  return GITHUB_RESERVED_PATHS.includes(path[0])
 }
 
 export const isSameGitHubRepo = (href: string, current: string): boolean => {
